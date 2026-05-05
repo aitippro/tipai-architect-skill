@@ -6,7 +6,7 @@
 
 用户提需求 → 裁判设计+调研 → 正方 vs 反方辩论 → 裁决 → 原子任务拆解
 
-[![License](https://img.shields.io/badge/License-NonCommercial-red?style=flat-square)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 [![Version](https://img.shields.io/badge/version-2.0-blue?style=flat-square)](CHANGELOG.md)
 
 </div>

@@ -35,5 +35,5 @@ git config core.hooksPath scripts/hooks
 
 ## 约束
 
-- 非商业使用许可（见 LICENSE）
+- MIT 许可（见 LICENSE）
 - 禁止在 Skill / 示例中硬编码任何真实凭证或 API Key
