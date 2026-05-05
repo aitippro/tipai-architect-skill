@@ -1,0 +1,39 @@
+# CLAUDE.md — tipai-architect-skill
+
+三方 AI 答辩式方案架构师 Skill 仓库。
+
+## 目录
+
+```
+skills/solution-forge.md   ← 核心 Skill（6 步工作流 + 三角色体系）
+templates/                 ← 标准输出模板（方案 / 裁决书 / 任务清单）
+examples/                  ← 完整全流程示例
+validator/                 ← 输出质量检查清单
+scripts/                   ← 仓库工具脚本（pre-commit hook 等）
+```
+
+## 加载 Skill
+
+```
+仓库: https://github.com/aitippro/tipai-architect-skill
+Skill 文件: skills/solution-forge.md
+最佳搭配: Claude Opus 4.7（复杂推理 + 长窗口）
+```
+
+## 开发规范
+
+- 所有改动基于 `main` 分支，通过 PR 合入
+- Skill 内容改动需同步更新 CHANGELOG
+- 模板 / 示例 / 质检清单改动需保持与 Skill 文件一致
+- 新增示例须跑通完整 6 步工作流后方可提交
+
+## pre-commit hook
+
+```
+git config core.hooksPath scripts/hooks
+```
+
+## 约束
+
+- 非商业使用许可（见 LICENSE）
+- 禁止在 Skill / 示例中硬编码任何真实凭证或 API Key

@@ -1,3 +1,9 @@
 node_modules/
 .DS_Store
 *.log
+.claude/
+.env*
+*.swp
+*.swo
+Thumbs.db
+*.tmp

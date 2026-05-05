@@ -1,0 +1,75 @@
+#!/bin/bash
+# ===== 敏感信息扫描 pre-commit hook =====
+# 在提交前扫描暂存区文件，阻止包含 API Key / Token / 私钥 等敏感内容的提交
+
+set -e
+
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+FOUND_SECRET=false
+TMP_FILE=$(mktemp)
+trap 'rm -f "$TMP_FILE"' EXIT
+
+# 从暂存区获取所有变更文件内容
+git diff --cached --name-only | while read -r file; do
+    # 跳过二进制文件
+    if file "$file" 2>/dev/null | grep -q "binary"; then
+        continue
+    fi
+    # 跳过已删除文件
+    if [ ! -f "$file" ]; then
+        continue
+    fi
+    git show ":$file" 2>/dev/null
+done > "$TMP_FILE"
+
+check_pattern() {
+    local pattern="$1"
+    local label="$2"
+    if grep -qnE "$pattern" "$TMP_FILE" 2>/dev/null; then
+        echo -e "${RED}[危险] 发现疑似 ${label}${NC}"
+        grep -nE "$pattern" "$TMP_FILE"
+        return 0
+    fi
+    return 1
+}
+
+# ==== 检测规则 ====
+
+check_pattern 'ghp_[A-Za-z0-9]{36}'          'GitHub Personal Access Token' && true
+check_pattern 'gho_[A-Za-z0-9]{36}'          'GitHub OAuth Token' && true
+check_pattern 'AKIA[0-9A-Z]{16}'             'AWS Access Key' && true
+check_pattern 'sk-[A-Za-z0-9_\-]{20,}'       '以 sk- 开头的 API Key' && true
+check_pattern 'xox[baprs]-[A-Za-z0-9\-]+'   'Slack Token' && true
+check_pattern 'BEGIN (RSA|DSA|EC|OPENSSH|PGP) PRIVATE KEY' '私钥内容' && true
+
+# AWS Secret Key（需要同时匹配密钥模式 + 上下文关键词）
+# 先过滤掉 >=3 个连续等号的 ASCII art 行，避免 hook 自检误报
+if grep -vE '={3,}' "$TMP_FILE" | grep -qnE '[A-Za-z0-9/+=]{40}' 2>/dev/null; then
+    if grep -vE '={3,}' "$TMP_FILE" | grep -qnE 'aws.*secret|secret.*key|SECRET.*KEY' 2>/dev/null; then
+        echo -e "${RED}[危险] 发现疑似 AWS Secret Key${NC}"
+        FOUND_SECRET=true
+    fi
+fi
+
+# 通用 API Key / Token
+check_pattern '(sk|pk|api[_-]?key|api[_-]?secret|auth[_-]?token)\s*[:=]\s*["\x27]?[A-Za-z0-9_\-]{20,}' 'API Key / Token' && true
+
+# 硬编码密码
+check_pattern '(password|passwd|pwd|secret)\s*[:=]\s*["\x27][^"\x27]{4,}["\x27]' '硬编码密码' && true
+
+if [ "$FOUND_SECRET" = true ]; then
+    echo ""
+    echo -e "${RED}========================================${NC}"
+    echo -e "${RED}  提交被阻止 - 发现敏感信息！${NC}"
+    echo -e "${RED}  请删除上述敏感内容后重新提交${NC}"
+    echo -e "${RED}========================================${NC}"
+    echo ""
+    echo -e "${YELLOW}提示: 使用 .env 文件或环境变量管理敏感配置${NC}"
+    echo -e "${YELLOW}提示: 若为误报，使用 git commit --no-verify 跳过${NC}"
+    exit 1
+fi
+
+exit 0

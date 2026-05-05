@@ -297,11 +297,13 @@ Step 6  任务拆解 ──→ 通过后拆为原子开发任务清单
 
 ## 输出模板
 
-裁判生成文档时使用仓库中的标准模板：
+裁判生成文档时使用仓库根目录下的标准模板（路径相对于本仓库根目录）：
 
 - 方案设计 → 使用 `templates/proposal-template.md`
 - 答辩裁决 → 使用 `templates/verdict-template.md`
 - 任务拆解 → 使用 `templates/task-list-template.md`
+
+> **注意**: 加载 Skill 后，Agent 须先确认当前工作目录为本仓库根目录，以确保模板文件可被正确读取。若不在仓库内，先 `git clone https://github.com/aitippro/tipai-architect-skill.git` 并进入目录。
 
 完整示例参见 `examples/tipai-desktop.md`
 
