@@ -78,6 +78,16 @@ tip-forge-skill/
 └── README.md
 ```
 
+## 🛡️ 质量机制
+
+| 机制 | 说明 |
+|------|------|
+| 答辩防空洞 | 引用数据必须说明来源/年份；AI 互指漏洞无效；空洞论点扣 2 分 |
+| SMART 任务 | 每项任务 Specific/Measurable/Actionable/Relevant/Time-bound |
+| 建设性反对 | 反方不能只否定，必须给出替代方案 |
+| 5 轮强制小结 | 裁判每 5 轮总结进度，防止辩论原地打转 |
+| 完整示例 | Skill 内含 TipAi Desktop 真实方案示例(追问→调研→答辩→拆解) |
+
 ---
 
 <div align="center">
