@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🔥 Tip Forge Skill
+# 🏛️ TipAI Architect Skill
 
-**三方 AI 答辩式方案锻造**
+**三方 AI 答辩式方案架构师**
 
 用户提需求 → 裁判设计+调研 → 正方 vs 反方辩论 → 裁决 → 拆解为原子任务
 
