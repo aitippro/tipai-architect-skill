@@ -295,64 +295,15 @@ Step 6  任务拆解 ──→ 通过后拆为原子开发任务清单
 
 ---
 
-## 完整示例
+## 输出模板
 
-### 用户输入
-> "我想做一个本地优先的 AI 提示词工程桌面工具，用户不需要联网注册，数据存本地"
+裁判生成文档时使用仓库中的标准模板：
 
-### Step 1-2 输出 (裁判追问 + 调研设计)
+- 方案设计 → 使用 `templates/proposal-template.md`
+- 答辩裁决 → 使用 `templates/verdict-template.md`
+- 任务拆解 → 使用 `templates/task-list-template.md`
 
-```
-👨‍⚖️ 裁判追问:
-Q1: 目标用户是什么人群？
-A1: 写作者、Prompt 工程师、AI 爱好者
-
-Q2: 他们现在怎么解决的？
-A2: 用 ChatGPT 网页版、Notion 模板、或者手写
-
-Q3: 技术栈偏好？
-A3: 前端 React/Electron，后端轻量，数据库 SQLite
-
-Q4: 预算和时间？
-A4: 个人开发，3 个月内出 MVP
-
-Q5: 盈利方式？
-A5: 基础版免费，Pro 版按月订阅
-```
-
-### Step 2 输出 (初版方案摘要)
-```markdown
-# 方案: TipAi Desktop v1.0
-
-## 问题: 现有提示词工具依赖云端，隐私差、无法离线使用
-## 方案: Electron + React + Rust 原生引擎的本地桌面应用
-## 竞品: PromptPerfect(云端付费)、ChatGPT(通用非专用)、自定义模板(无 AI 优化)
-## 技术: React 19/Electron 41/Rust NAPI-RS/SQLite/IPC 通信
-## 盈利: 免费基础版 + Pro 订阅($9/月)
-```
-
-### Step 4 输出 (答辩片段)
-
-```
-👨‍⚖️ 裁判: 第1轮开始 — 辩题: 技术可行性
-✅ 正方: Electron+Rust 组合已被 Obsidian/VS Code 验证，本地 SQLite 性能足够
-❌ 反方: Rust 原生模块编译复杂，跨平台打包体积大(100MB+)，用户下载门槛高。
-        建议: 先出 Windows 版，macOS 用 CI 自动构建
-✅ 正方: 同意分批发布策略。Windows 占桌面用户 70%+，先验证核心体验
-👨‍⚖️ 裁判小结: 正方论点采纳。修正方向：首批仅 Windows。正方 8/10 反方 7/10
-```
-
-### Step 5-6 输出 (裁决 + 任务拆解)
-```markdown
-# 裁决: 🟢 通过 (有条件)
-修改点: 首批仅 Windows，Pro 定价从 $9 调为 $5 测试市场
-
-# 任务清单 (Phase 1)
-| T001 | Electron 脚手架 + Vite + React 集成 | 无 | 窗口可显示 | Day 1 |
-| T002 | Rust NAPI-RS 环境搭建 | 无 | .node 编译成功 | Day 1 |
-| T003 | SQLite 连接 + 基础 CRUD | T002 | 读写测试通过 | Day 2 |
-| T004 | tRPC + Hono 进程内通信 | T001 | API 调用成功 | Day 2 |
-```
+完整示例参见 `examples/tipai-desktop.md`
 
 ---
 
