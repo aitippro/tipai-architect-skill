@@ -5,10 +5,14 @@
 ## 目录
 
 ```
-skills/solution-forge.md   ← 核心 Skill（6 步工作流 + 三角色体系）
+skills/
+  solution-forge.md        ← 核心 Skill（6 步工作流 + 三角色体系）
+  solution-forge-lite.md   ← 轻量版（5 步，跳过答辩直接出方案）
 templates/                 ← 标准输出模板（方案 / 裁决书 / 任务清单）
-examples/                  ← 完整全流程示例
-validator/                 ← 输出质量检查清单
+examples/                  ← 5 个行业完整示例
+validator/
+  check-tasks.md           ← 任务拆解质量检查
+  check-skill.md           ← Skill 格式自检
 ```
 
 ## 加载 Skill

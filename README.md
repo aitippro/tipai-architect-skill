@@ -18,15 +18,21 @@
 ```
 tipai-architect-skill/
 ├── skills/
-│   └── solution-forge.md          ← 🎯 核心 Skill
+│   ├── solution-forge.md          ← 🎯 核心 Skill（完整答辩版）
+│   └── solution-forge-lite.md     ← ⚡ 轻量版（跳过答辩）
 ├── templates/                     ← 标准输出模板
 │   ├── proposal-template.md       ← 方案设计模板
 │   ├── verdict-template.md        ← 裁决书模板
-│   └── task-list-template.md      ← 任务清单模板
-├── examples/
-│   └── tipai-desktop.md           ← 完整全流程示例
+│   └── task-list-template.md      ← 原子任务清单模板
+├── examples/                      ← 行业示例（5 个）
+│   ├── tipai-desktop.md           ← 桌面应用
+│   ├── saas-helpdesk.md           ← SaaS 客服
+│   ├── mobile-habit-app.md        ← 移动打卡
+│   ├── open-source-cli-tool.md    ← 开源 CLI
+│   └── miniprogram-group-buying.md← 社区团购
 ├── validator/
-│   └── check-tasks.md             ← 任务拆解质量检查清单
+│   ├── check-tasks.md             ← 任务拆解质检
+│   └── check-skill.md             ← Skill 格式自检
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
