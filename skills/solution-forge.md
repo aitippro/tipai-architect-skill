@@ -1,5 +1,7 @@
 # Skill: 三方答辩式方案锻造
 
+> **自包含设计**：本 Skill 已内嵌全部模板格式和验证规则，加载后即可使用完整能力，无需访问任何外部文件。
+
 用户提出需求 → 裁判AI设计初版方案(含实时调研) → 正方vs反方AI辩论 → 裁决 → 拆解为原子开发任务。
 
 ---
@@ -272,9 +274,9 @@ Round N:
 
 ### 公告板（唯一通信介质）
 
-裁判在 Step 4 开始时创建 `debate-board.md`，使用 `templates/debate-board-template.md` 格式。
+裁判在 Step 4 开始时用 `Write` 工具创建 `debate-board.md`。
 
-公告板结构：
+公告板完整结构：
 ```
 # 答辩公告板: [方案名称]
 
@@ -456,7 +458,7 @@ Round N:
 只写入裁决书的"📝 反方反对意见"章节。
 ```
 
-反对意见写入 `templates/verdict-template.md` 的反对意见章节。
+反对意见写入裁决书的"📝 反方反对意见"章节。
 
 ### 用户最终确认
 ```
@@ -491,7 +493,7 @@ Round N:
 
 ### 6 阶段输出
 
-使用 `templates/task-list-template.md` 格式，6 个 Phase 严格按依赖递进：
+按以下 6 个 Phase 输出，每 Phase 用表格列出任务：
 
 ```
 Phase 1: 项目骨架 — 脚手架/配置文件/目录结构
@@ -501,6 +503,12 @@ Phase 4: 页面 — 每个页面拆为 3 个任务(布局/交互/数据)
 Phase 5: 集成联调 — 路由/鉴权/状态管理/全流程打通
 Phase 6: 测试与部署 — 单元测试/E2E/CI/部署脚本
 ```
+
+任务表格式：`| ID | 任务 | 产出文件 | 依赖 | 验收标准 |`
+
+每 Phase 末尾附验证卡：`| ID | 存在性 | 质量 | 防伪 | 依赖 | 测试 | 状态 | 完成时间 | 执行模型 |`
+
+全部完成后输出执行日志：`📋 开始时间 / 结束时间 / 执行模型 / 总N 完成N 跳过N 失败N`
 
 ### 任务验证协议
 
@@ -574,21 +582,6 @@ Agent 执行任务清单时必须遵守：
 ### 复庭命令
 
 "复庭" | "复庭，原因是XX" | "针对XX重新辩论" | "方案已变更，重新评估可行性"
-
----
-
-## 输出模板
-
-裁判生成文档时使用仓库根目录下的标准模板（路径相对于本仓库根目录）：
-
-- 方案设计 → 使用 `templates/proposal-template.md`
-- 答辩公告板 → 使用 `templates/debate-board-template.md`
-- 答辩裁决 → 使用 `templates/verdict-template.md`
-- 任务拆解 → 使用 `templates/task-list-template.md`
-
-> **注意**: 加载 Skill 后，Agent 须先确认当前工作目录为本仓库根目录，以确保模板文件可被正确读取。若不在仓库内，先 `git clone https://github.com/aitippro/tipai-architect-skill.git` 并进入目录。
-
-完整示例参见 `examples/tipai-desktop.md`
 
 ---
 
