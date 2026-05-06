@@ -25,12 +25,13 @@ tipai-architect-skill/
 │   ├── debate-board-template.md   ← 答辩公告板模板
 │   ├── verdict-template.md        ← 裁决书模板
 │   └── task-list-template.md      ← 原子任务清单模板
-├── examples/                      ← 行业示例（5 个）
-│   ├── tipai-desktop.md           ← 桌面应用
-│   ├── saas-helpdesk.md           ← SaaS 客服
-│   ├── mobile-habit-app.md        ← 移动打卡
-│   ├── open-source-cli-tool.md    ← 开源 CLI
-│   └── miniprogram-group-buying.md← 社区团购
+├── examples/                      ← 行业示例（6 个）
+│   ├── tipai-desktop.md           ← 桌面应用（🟢 通过）
+│   ├── saas-helpdesk.md           ← SaaS 客服（🟡 有条件）
+│   ├── mobile-habit-app.md        ← 移动打卡（🟡 有条件）
+│   ├── open-source-cli-tool.md    ← 开源 CLI（🟢 通过）
+│   ├── miniprogram-group-buying.md← 社区团购（🟡 有条件）
+│   └── rejected-proposal.md       ← AI 算命（🔴 驳回）
 ├── validator/
 │   ├── check-tasks.md             ← 任务拆解质检
 │   └── check-skill.md             ← Skill 格式自检
