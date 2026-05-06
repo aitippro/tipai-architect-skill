@@ -90,5 +90,5 @@ tipai-architect-skill/
 ---
 
 <div align="center">
-<sub>非商业使用许可 · TipAi Team © 2026</sub>
+<sub>MIT License · TipAi Team © 2026</sub>
 </div>
