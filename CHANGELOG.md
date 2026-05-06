@@ -1,5 +1,11 @@
 # Changelog
 
+## v4.0 (2026-05-06)
+- 双 Agent 答辩架构：正方/反方作为独立 Agent 运行，思维隔离
+- 新增 templates/debate-board-template.md：答辩公告板模板（全程记录，客户可视）
+- 新增 Step 2.5 深度设计(可选)：裁判输出创新功能/架构/性能/实践 4 维设计
+- Skill 重写 Step 4 为双 Agent 模式，含 Agent 生成指令格式
+
 ## v3.0 (2026-05-06)
 - 新增 validator/check-skill.md：Skill 格式校验清单
 - 新增 skills/solution-forge-lite.md：轻量版 Skill（跳过答辩，快速出方案）
